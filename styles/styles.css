@@ -1,0 +1,918 @@
+:root {
+  --bg-header-shape-1: hsla(13, 100%, 49%, 0.7);
+  --bg-header-shape-2: hsla(33, 100%, 50%, 0.7);
+
+  --bg-clip-1: hsl(13, 100%, 49%);
+  --bg-clip-2: hsl(33, 100%, 50%);
+  --dark-orange-t: hsla(13, 100%, 49%, 0.8);
+  --dark-orange: hsl(0, 100%, 27%);
+
+  --bg-button-1: hsl(49, 100%, 50%);
+  --bg-button-2: hsl(33, 93%, 54%);
+
+  --bg-grey-1: hsla(0, 0%, 86%);
+  --bg-grey-2: hsla(0, 0%, 95%);
+  --bg-grey-3: hsla(50, 12%, 63%);
+
+  --bg-grey-1-t: hsla(0, 0%, 86%, 0.9);
+  --bg-grey-2-t: hsla(0, 0%, 95%, 0.7);
+  --bg-grey-3-t: hsla(50, 12%, 63%, 0.7);
+
+  --general-white: hsl(0, 0%, 100%);
+  --general-black: hsl(0, 0%, 0%);
+  --light-black: hsla(0, 0%, 0%, 0.7);
+}
+
+/************************************* base and utility styles **********************************/
+html {
+  font-size: 62.5%;
+  font-family: 'Lato', sans-serif;
+}
+
+.u-col-orng {
+  color: var(--dark-orange);
+}
+
+.u-col-black {
+  color: var(--general-black);
+}
+/**************************************************Header styles*******************************/
+.header {
+  height: 100vh;
+  background-image: linear-gradient(to right, var(--bg-grey-1-t), var(--bg-grey-2-t), var(--bg-grey-3-t)),
+    url('/assets/images/bg-1.jpg');
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+}
+
+.header__shape {
+  display: inline-block;
+  height: 100%;
+  width: 40%;
+  clip-path: polygon(0 0, 100% 0%, 55% 100%, 0% 100%);
+  background-image: linear-gradient(to right, var(--bg-header-shape-1), var(--bg-header-shape-2)),
+    url('/assets/images/bg-shape-big.jpg');
+  background-size: cover;
+  animation-name: moveInRight;
+  animation-duration: 1s;
+}
+
+.header__content {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 59.5%;
+  height: 100%;
+}
+
+.header__navigation {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: var(--light-black);
+  animation: navigationIn 0.8s ease-out 1s;
+  animation-fill-mode: backwards;
+}
+
+.header__navigation--list {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  list-style: none;
+}
+
+.header__navigation--item {
+  width: 33.33%;
+  padding: 1rem;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.header__navigation--link:link,
+.header__navigation--link:visited {
+  position: relative;
+  display: inline-block;
+  color: var(--general-white);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.header__navigation--link::after {
+  content: '';
+  position: absolute;
+  bottom: -0.2rem;
+  left: 0;
+  height: 10%;
+  width: 0%;
+  background-color: var(--general-white);
+  transition: all 0.2s;
+}
+
+.header__text-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  padding: 3rem;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 8rem;
+  text-transform: uppercase;
+}
+
+.header__title--fitness {
+  display: block;
+  transform: translateX(-12.5%);
+  animation: FitnessWordAppear 1s;
+}
+
+.header__title--station {
+  display: block;
+  transform: translateX(12.5%);
+  animation: StationWordAppear 1s;
+}
+
+.header__button:link,
+.header__button:visited {
+  position: relative;
+  padding: 1.5rem;
+  margin-top: 7rem;
+  height: 8rem;
+  width: 38rem;
+  outline: 1px solid var(--general-white);
+  color: var(--general-white);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 2.5rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  background-color: var(--dark-orange-t);
+  transition: all 0.5s;
+  backface-visibility: hidden;
+  animation: buttonEntrance 1s 1s backwards;
+  align-self: center;
+  line-height: 4rem;
+}
+
+.header__button::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+  background-color: hsla(13, 100%, 49%, 0.5);
+  transition: all 0.5s;
+}
+
+.header__button:active {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(0%) scale(1.1);
+}
+/*********************************************about section *********************************/
+.about {
+  height: 100vh;
+  background-image: linear-gradient(
+      to right,
+      hsla(0, 0%, 0%, 0.7),
+      hsla(0, 0%, 0%, 0.6),
+      hsla(0, 0%, 0%, 0.5)
+    ),
+    url('/assets/images/bg-about-1-big.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.section__header {
+  height: 30%;
+  /* background-color: hsl(33, 100%, 50%); */
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.heading-2 {
+  font-size: 3rem;
+  margin: 3rem auto;
+  text-align: center;
+  width: 12%;
+  padding: 0.3rem;
+  color: var(--general-white);
+  border-bottom: 2px solid var(--dark-orange);
+}
+
+.section__paragraph {
+  font-size: 1.5rem;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  color: var(--general-white);
+  line-height: 2rem;
+}
+
+.section__content {
+  display: flex;
+  background-color: orange;
+  height: 50%;
+  margin-top: 5rem;
+}
+
+.section__info {
+  width: 33.33%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 2rem;
+}
+
+div[class|='section__bg-img'] {
+  height: 10rem;
+  width: 10rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  position: relative;
+}
+
+div[class|='section__bg-img']::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 10rem;
+  width: 10rem;
+  border-top: 5px solid var(--dark-orange);
+  transform: scale(1.2) rotate(0deg);
+  border-radius: 50%;
+  transition: all 1s;
+}
+
+div[class|='section__bg-img']::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 10rem;
+  width: 10rem;
+  border-bottom: 5px solid var(--general-black);
+  transform: scale(1.2) rotate(0);
+  border-radius: 50%;
+  transition: all 1s;
+}
+
+.section__bg-img-1 {
+  background: url('../assets/images/about-pic-1-small.jpg');
+}
+
+.section__bg-img-2 {
+  background: url('../assets/images/about-pic-2-small.jpg');
+}
+
+.section__bg-img-3 {
+  background: url('../assets/images/about-pic-3-small.jpg');
+}
+
+.heading-3 {
+  font-size: 2rem;
+  padding: 0.3rem;
+  color: var(--general-white);
+  text-align: center;
+  text-transform: uppercase;
+  margin: 1.5rem 0;
+}
+
+.section__paragraph-card {
+  padding: 0 2rem;
+  margin: 0;
+  width: 100%;
+}
+
+/* *************************************** Fees section ************************************ */
+.our-fees {
+  height: 100vh;
+  background-image: linear-gradient(to right bottom, var(--bg-grey-1), var(--bg-grey-2), var(--bg-grey-3));
+  position: relative;
+}
+
+.our-fees__bg-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.5);
+  margin: 0 auto;
+}
+
+.section-fees__header {
+  height: 15%;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.section__prices {
+  height: 85%;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  justify-content: space-around;
+  padding: 1.5rem;
+}
+
+.section__prices--card {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  border: 2px solid orangered;
+  border-radius: 3px;
+  width: 25%;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 1);
+  transition: all 0.5s;
+  backface-visibility: hidden;
+}
+
+.section__prices--heading-text {
+  color: var(--general-white);
+  font-size: 1.5rem;
+}
+
+.section__prices--benefits {
+  list-style: none;
+  text-align: left;
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-top: 0.5px solid white;
+  border-bottom: 0.5px solid white;
+}
+
+.section__prices--item {
+  margin: 2rem;
+  color: var(--general-white);
+  position: relative;
+}
+
+.section__prices--item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -10%;
+  height: 100%;
+  width: 7%;
+}
+
+.valid-benefit::before {
+  background-color: orangered;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.unvalid-benefit::before {
+  background-color: red;
+  clip-path: polygon(
+    20% 0%,
+    0% 20%,
+    30% 50%,
+    0% 80%,
+    20% 100%,
+    50% 70%,
+    80% 100%,
+    100% 80%,
+    70% 50%,
+    100% 20%,
+    80% 0%,
+    50% 30%
+  );
+  opacity: 0.4;
+}
+
+.section__prices--item {
+  margin: 2rem;
+}
+
+.section__prices--payment:link,
+.section__prices--payment:visited {
+  background-color: hsla(51, 100%, 49%, 0.753);
+  padding: 1rem;
+  color: var(--general-black);
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 1px solid var(--general-white);
+  text-decoration: none;
+  transition: all 0.5s;
+  backface-visibility: hidden;
+}
+
+/******************************* contact section ********************************************** */
+
+.contact {
+  height: 100vh;
+  background-image: linear-gradient(to right bottom, var(--bg-grey-1), var(--bg-grey-2), var(--bg-grey-3));
+  position: relative;
+  overflow: hidden;
+}
+
+.contact__header {
+  margin: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.contact__bg-video {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+}
+
+.contact__video {
+  width: 100%;
+}
+.contact__form-container {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70%;
+  width: 70%;
+  margin-top: 2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.contact__form--shape {
+  height: 100%;
+  width: 70%;
+  transform: rotate(-98deg) translateY(-50%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  background-color: var(--dark-orange);
+}
+
+.contact__form--img {
+  position: absolute;
+  z-index: 20;
+  bottom: -2rem;
+  left: -2rem;
+  transform: scale(0.9);
+}
+
+.contact__form--sub-cont {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact__form {
+  padding: 5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.contact__form-group:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.contact__input,
+.contact__textarea {
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: inherit;
+  padding: 1.5rem 2rem;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  width: 100%;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+.contact__input:focus,
+.contact__textarea:focus {
+  outline: none;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid var(--dark-orange);
+}
+
+.contact__input::-webkit-input-placeholder,
+.contact__textarea::-webkit-input-placeholder {
+  color: rgb(128, 128, 128);
+}
+
+.contact__input:placeholder-shown + .contact__label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4rem);
+}
+
+.contact__label {
+  font-size: 1.2rem;
+  margin-left: 2rem;
+  margin-top: 0.7rem;
+  display: block;
+  transform: translateY(0);
+  transition: all 0.3s;
+}
+
+.contact__icon-container {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.contact__icon {
+  color: var(--dark-orange);
+  font-size: 3rem;
+}
+
+.contact__form-button-container {
+  margin: 3rem 0;
+  text-align: center;
+  padding: 1rem;
+}
+
+.contact__form-button {
+  display: inline-block;
+  padding: 1rem 5rem;
+  font-size: 2rem;
+  background-color: var(--dark-orange);
+  border-radius: 10px;
+  border: none;
+  text-transform: uppercase;
+  color: var(--general-white);
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  transition: all 0.5s;
+}
+
+/* ***************************************footer styles************************************ */
+.footer {
+  height: 40vh;
+  background-color: orange;
+  padding: 3rem;
+  border-top: 1rem solid black;
+  border-bottom: 1rem solid black;
+}
+
+.footer__name-container {
+  height: 50%;
+  text-align: center;
+}
+
+.footer__title {
+  display: inline-block;
+  font-size: 3rem;
+  animation: none;
+}
+
+.footer__content {
+  text-align: center;
+  height: 50%;
+}
+
+.footer__text {
+  font-size: 2rem;
+  font-weight: bold;
+}
+/* ***************************************keyframes***************************************** */
+@keyframes FitnessWordAppear {
+  0% {
+    opacity: 0;
+    transform: translateX(0%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-12.5%);
+  }
+}
+
+@keyframes StationWordAppear {
+  0% {
+    opacity: 0;
+    transform: translateX(0%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(12.5%);
+  }
+}
+
+@keyframes buttonHoverAnimate {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes buttonEntrance {
+  0% {
+    transform: translateY(10%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes navigationIn {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+/********************************************* media queries*********************** */
+@media only screen and (max-width: 900px),
+  only screen and (min-width: 900px) and (max-width: 1230px) and (max-height: 640px) {
+  html {
+    font-size: 44%;
+  }
+
+  .heading-2 {
+    width: 18%;
+  }
+
+  .our-fees {
+    height: auto;
+    margin: 1rem;
+  }
+
+  .our-fees__bg-img {
+    transform: translate(-50%, -50%) scale(0.5);
+    display: none;
+  }
+
+  .section-fees__header {
+    height: 15%;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .section__prices {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+  }
+
+  .section__prices--card {
+    width: 40rem;
+  }
+
+  /* .contact {
+    height: 100vh;
+  } */
+
+  .contact__header {
+    margin: 0;
+    position: relative;
+    z-index: 10;
+  }
+
+  .contact__bg-video {
+    display: none;
+  }
+
+  .contact__form-container {
+    width: 90%;
+  }
+
+  .contact__form--shape {
+    transform: rotate(-98deg) translateY(-70%) scale(1.5);
+  }
+
+  .contact__form--img {
+    z-index: 20;
+    bottom: -3%;
+    left: -3%;
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 45%;
+  }
+
+  .header__shape {
+    display: none;
+  }
+
+  .header__content {
+    width: 100%;
+  }
+
+  .header__title--fitness {
+    transform: translate(0);
+    animation: none;
+  }
+
+  .header__title--station {
+    transform: translate(0);
+    animation: none;
+  }
+
+  .about {
+    height: auto;
+  }
+
+  .section__paragraph {
+    font-size: 1.6rem;
+    width: 70%;
+  }
+
+  .section__content {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    margin: 1rem;
+  }
+
+  .section__info {
+    width: 100%;
+    margin: 3rem 0;
+  }
+
+  div[class|='section__bg-img']::before {
+    display: none;
+  }
+
+  div[class|='section__bg-img']::after {
+    display: none;
+  }
+
+  .contact__form-container {
+    width: 90%;
+  }
+
+  .contact__form--shape {
+    transform: rotate(0) translateY(0) scale(1);
+    width: 20%;
+  }
+
+  .contact__form--img {
+    display: none;
+  }
+
+  .contact__form--sub-cont {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  html {
+    font-size: 42%;
+  }
+
+  .header__shape {
+    display: none;
+  }
+
+  .header__content {
+    width: 100%;
+  }
+
+  .heading-2 {
+    width: 50%;
+  }
+
+  .contact__form {
+    padding: 1rem;
+    padding-top: 8rem;
+  }
+}
+
+@media only screen and (min-width: 900px) and (min-height: 700px) {
+  html {
+    font-size: 70%;
+  }
+
+  .our-fees {
+    height: auto;
+    margin: 1rem;
+  }
+
+  .our-fees__bg-img {
+    transform: translate(-50%, -50%) scale(0.5);
+    display: none;
+  }
+
+  .section-fees__header {
+    height: 15%;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .section__prices {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+  }
+
+  .section__prices--card {
+    width: 40rem;
+  }
+}
+
+@media (hover: hover) {
+  .header__navigation--item:hover {
+    cursor: pointer;
+    background-position: 0%;
+  }
+
+  .header__navigation--item:hover .header__navigation--link {
+    color: var(--bg-header-shape-1);
+  }
+
+  .header__navigation--item:hover .header__navigation--link:after {
+    width: 100%;
+    background-color: var(--bg-header-shape-1);
+  }
+
+  .header__button:hover {
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--dark-orange);
+    transform: translateY(-10%) scale(1.1);
+  }
+
+  .header__button:hover::after {
+    opacity: 0;
+    background-color: var(--dark-orange);
+    transform: translateY(-10%) scale(1.5);
+    animation: buttonHoverAnimate 1s infinite;
+  }
+
+  .section__info:hover div[class|='section__bg-img']::before {
+    transform: scale(1.2) rotate(180deg);
+  }
+
+  .section__info:hover div[class|='section__bg-img']::after {
+    transform: scale(1.2) rotate(180deg);
+  }
+
+  .section__prices--payment:hover {
+    transform: scale(1.1);
+    color: var(--general-white);
+    background-color: var(--dark-orange);
+  }
+
+  .section__prices--card:hover {
+    transform: translateY(-0.5rem) scale(1.05);
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .contact__form-button:hover {
+    transform: scale(1.1);
+  }
+}
